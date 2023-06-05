@@ -43,7 +43,7 @@
       const box = document.querySelector('.box');
       const video = document.querySelector('video');
 
-      document.addEventListener('fullscreenchange', (event) => {
+      video.addEventListener('fullscreenchange', (event) => {
         // if (document.fullscreenElement === null) {
         console.log('DLLM');
         box.style.display = 'block';
