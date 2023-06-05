@@ -36,12 +36,19 @@
     </style>
   </head>
   <body>
+    <p></p>
     <div class="box"></div>
     <video class="video" src="./kimi.mp4" controls></video>
+    <input id="input" type="file" />
 
     <script>
       const box = document.querySelector('.box');
       const video = document.querySelector('video');
+      const input = document.getElementById('input');
+
+      input.addEventListener('change', (e) => {
+        document.querySelector('p').innerText = e.target.files[0].type;
+      });
 
       // video.addEventListener('fullscreenchange', (event) => {
       //   if (document.fullscreenElement === null) {
@@ -51,21 +58,33 @@
       //   }
       // });
 
+      box.addEventListener('click', () => {
+        box.style.display = 'none';
+        video.play();
+      });
+
+      // android
+      document.addEventListener('fullscreenchange', () => {
+        console.log('fullscreenchange');
+      });
+
+      document.addEventListener('mozfullscreenchange', () => {
+        console.log('mozfullscreenchange');
+      });
+
+      document.addEventListener('webkitfullscreenchange', () => {
+        console.log('webkitfullscreenchange');
+      });
+
+      document.addEventListener('msfullscreenchange', () => {
+        console.log('msfullscreenchange');
+      });
+
+      // ios
       video.addEventListener('webkitendfullscreen', () => {
         if (!document.fullscreen) {
           box.style.display = 'block';
         }
-      });
-
-      document.addEventListener('fullscreenchange', () => {
-        if (!document.fullscreen) {
-          box.style.display = 'block';
-        }
-      });
-
-      box.addEventListener('click', () => {
-        box.style.display = 'none';
-        video.play();
       });
     </script>
   </body>
