@@ -43,12 +43,24 @@
       const box = document.querySelector('.box');
       const video = document.querySelector('video');
 
-      video.addEventListener('fullscreenchange', (event) => {
-        // if (document.fullscreenElement === null) {
-        console.log('DLLM');
-        box.style.display = 'block';
-        window.alert('fuck');
-        // }
+      // video.addEventListener('fullscreenchange', (event) => {
+      //   if (document.fullscreenElement === null) {
+      //     console.log('DLLM');
+      //     box.style.display = 'block';
+      //     window.alert('fuck');
+      //   }
+      // });
+
+      video.addEventListener('webkitendfullscreen', () => {
+        if (!document.fullscreen) {
+          box.style.display = 'block';
+        }
+      });
+
+      document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreen) {
+          box.style.display = 'block';
+        }
       });
 
       box.addEventListener('click', () => {
